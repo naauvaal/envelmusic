@@ -3080,3 +3080,46 @@ window.addEventListener('pagehide', persistQueue);
 document.addEventListener('visibilitychange', () => { if (document.hidden) persistQueue(); });
 restoreQueue();
 route();
+
+/* ================= PWA Install Prompt ================= */
+function initPWAPrompt() {
+  const prompt = $('#pwa-prompt');
+  const closeBtn = $('#pwa-close');
+  const dismissBtn = $('#pwa-dismiss-text');
+  const instBox = $('#pwa-instruction');
+  
+  if (!prompt || !instBox) return;
+
+  // 1. Cek jika aplikasi sudah diakses dari Layar Utama (Standalone mode)
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  if (isStandalone) return;
+
+  // 2. Cek apakah user sudah pernah menutup pop-up ini sebelumnya (agar tidak mengganggu)
+  if (store.get('pwa_dismissed', false)) return;
+
+  // 3. Deteksi Sistem Operasi
+  const ua = window.navigator.userAgent.toLowerCase();
+  const isIOS = /iphone|ipad|ipod/.test(ua);
+  const isAndroid = /android/.test(ua);
+
+  // Buat instruksi dinamis
+  if (isIOS) {
+    instBox.innerHTML = '<div class="pwa-inst">Ketuk ikon <strong>Bagikan (Share)</strong> di menu bawah Anda, lalu gulir dan pilih <br><strong>"Tambah ke Layar Utama"</strong>.</div>';
+    prompt.classList.remove('hidden');
+  } else if (isAndroid) {
+    instBox.innerHTML = '<div class="pwa-inst">Ketuk ikon <strong>Menu (⋮)</strong> di sudut kanan atas peramban Anda, lalu pilih <br><strong>"Tambahkan ke Layar Utama"</strong>.</div>';
+    prompt.classList.remove('hidden');
+  }
+
+  // Aksi Tutup Prompt
+  const dismissPrompt = () => {
+    prompt.classList.add('hidden');
+    store.set('pwa_dismissed', true); // Simpan status agar tidak muncul terus
+  };
+
+  if (closeBtn) closeBtn.addEventListener('click', dismissPrompt);
+  if (dismissBtn) dismissBtn.addEventListener('click', dismissPrompt);
+}
+
+// Munculkan prompt secara elegan 3,5 detik setelah web dimuat (setelah splash screen hilang)
+setTimeout(initPWAPrompt, 3500);
