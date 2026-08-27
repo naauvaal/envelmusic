@@ -230,6 +230,18 @@ try {
     </div>
   </div>
   <div id="toast" class="hidden"></div>
+  <!-- PWA Install Prompt (Mobile Only) -->
+  <div id="pwa-prompt" class="hidden">
+    <div class="pwa-card">
+      <button id="pwa-close" class="icon-btn" title="Tutup"><svg class="ic"><use href="#i-x"/></svg></button>
+      <div class="pwa-content">
+        <h3>Bawa Envel Music Kemana Saja! 🎵</h3>
+        <p>Tambahkan ke layar utama untuk memutar musik di latar belakang dan mendapatkan pengalaman penuh.</p>
+        <div id="pwa-instruction"></div>
+        <button id="pwa-dismiss-text" class="pill-btn">Lanjutkan ke Web</button>
+      </div>
+    </div>
+  </div>
   <!-- Floating mini widget (in-page fallback; also cloned into Document PiP) -->
   <div id="float-widget" class="hidden" aria-label="Floating player">
     <img id="fw-art" alt="" />
