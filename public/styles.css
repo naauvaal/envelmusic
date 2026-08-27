@@ -1326,3 +1326,45 @@ html[data-theme="light"] .modal-card .pl-form-input {
     color: #121212;
   }
 }
+
+/* ================= PWA Prompt ================= */
+#pwa-prompt {
+  position: fixed; inset: 0; z-index: 400;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex; align-items: flex-end; justify-content: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: opacity 0.3s ease;
+}
+#pwa-prompt.hidden {
+  opacity: 0; pointer-events: none;
+}
+.pwa-card {
+  background: var(--card-hover);
+  width: 100%; max-width: 480px;
+  border-radius: 24px 24px 0 0;
+  padding: 32px 24px 24px; position: relative;
+  box-shadow: 0 -8px 40px rgba(0,0,0,0.5);
+  animation: slideUpPwa 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pwa-card h3 { margin-bottom: 12px; font-weight: 800; font-size: 20px; color: var(--text); }
+.pwa-card p { color: var(--muted); font-size: 14.5px; margin-bottom: 20px; line-height: 1.5; }
+.pwa-inst { 
+  background: var(--elevated); padding: 16px; border-radius: 12px; 
+  font-size: 14px; line-height: 1.5; color: var(--text); margin-bottom: 20px;
+  border: 1px solid var(--border);
+}
+.pwa-inst strong { color: var(--accent-bright); }
+#pwa-close { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.1); }
+#pwa-dismiss-text { width: 100%; justify-content: center; border: none; font-weight: 600;}
+
+html[data-theme="light"] .pwa-card { background: #ffffff; }
+html[data-theme="light"] .pwa-inst { background: #f4f4f4; border-color: #dcdcdc; }
+
+@keyframes slideUpPwa { 
+  from { transform: translateY(100%); } 
+  to { transform: translateY(0); } 
+}
+@media (min-width: 861px) {
+  #pwa-prompt { display: none !important; } /* Hanya muncul di mobile */
+}
