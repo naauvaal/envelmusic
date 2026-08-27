@@ -1,0 +1,243 @@
+/* Rich Music - Modern Glassmorphism Theme (Non-Spotify) */
+:root {
+  --bg: #0f172a;
+  --main-bg: rgba(255, 255, 255, 0.03);
+  --card: rgba(255, 255, 255, 0.04);
+  --card-hover: rgba(255, 255, 255, 0.08);
+  --elevated: rgba(255, 255, 255, 0.06);
+  --accent: #6366f1; /* Indigo */
+  --accent-bright: #818cf8;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --subdued: #64748b;
+  --border: rgba(255, 255, 255, 0.08);
+  
+  --player-h: 88px;
+  --navm-h: 70px;
+  --radius: 24px;
+  --radius-lg: 28px;
+  
+  --play-bg: #818cf8;
+  --play-fg: #ffffff;
+  
+  --chip-on-bg: #818cf8;
+  --chip-on-fg: #ffffff;
+  
+  --bar-bg: rgba(255, 255, 255, 0.15);
+  --bar-fill: #ffffff;
+  
+  --hover: rgba(255, 255, 255, 0.08);
+  --hover-strong: rgba(255, 255, 255, 0.12);
+  
+  --lyric-dim: rgba(255, 255, 255, 0.38);
+  --lyric-past: rgba(255, 255, 255, 0.72);
+  --lyric-now: #ffffff;
+  
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  --glass: rgba(15, 23, 42, 0.65);
+  --tint: 230;
+  --eq: var(--accent-bright);
+  color-scheme: dark;
+}
+
+/* Light Theme Variant */
+html[data-theme="light"] {
+  --bg: #f1f5f9;
+  --main-bg: rgba(255, 255, 255, 0.7);
+  --card: rgba(255, 255, 255, 0.8);
+  --card-hover: rgba(255, 255, 255, 1);
+  --elevated: rgba(0, 0, 0, 0.04);
+  --accent: #4f46e5;
+  --accent-bright: #6366f1;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: rgba(0, 0, 0, 0.06);
+  --play-bg: #4f46e5;
+  --play-fg: #ffffff;
+  --bar-bg: rgba(0, 0, 0, 0.1);
+  --bar-fill: #4f46e5;
+  --glass: rgba(255, 255, 255, 0.7);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+body {
+  background: radial-gradient(circle at top left, #312e81 0%, var(--bg) 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: "Figtree", "Segoe UI", sans-serif;
+  overflow: hidden;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+html[data-theme="light"] body {
+  background: radial-gradient(circle at top left, #e0e7ff 0%, var(--bg) 60%);
+}
+
+button { font-family: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+.ic { width: 16px; height: 16px; fill: currentColor; display: block; }
+img { display: block; }
+a { color: inherit; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* ---------- Layout Utama ---------- */
+#app {
+  display: flex;
+  height: 100vh;
+  padding: 16px; /* Memberi jarak agar UI terlihat mengambang */
+  gap: 16px;
+}
+
+/* ---------- Sidebar ---------- */
+#sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.side-box {
+  background: var(--main-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.lib-box { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.q-box { flex: 0 1 auto; max-height: 35%; display: flex; flex-direction: column; overflow: hidden; }
+
+/* ---------- Main Area ---------- */
+#main {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--main-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding-bottom: 40px;
+}
+
+#topbar {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 24px;
+  background: linear-gradient(180deg, var(--glass) 40%, transparent);
+  backdrop-filter: blur(20px);
+}
+
+/* Mempercantik Search Bar agar tidak kaku */
+.tb-search {
+  flex: 1; max-width: 480px; margin: 0 auto;
+  display: flex; align-items: center; gap: 10px;
+  height: 44px; padding: 0 20px;
+  background: var(--elevated);
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+.tb-search:hover { background: var(--card-hover); transform: translateY(-1px); }
+
+/* ---------- Mini Player (Floating) ---------- */
+#miniplayer {
+  position: fixed;
+  bottom: 24px; /* Mengambang dari bawah */
+  left: 292px; /* Menyesuaikan sidebar */
+  right: 24px;
+  height: var(--player-h);
+  background: var(--glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  display: grid; 
+  grid-template-columns: 1fr 2fr 1fr; 
+  align-items: center;
+  padding: 0 24px;
+  z-index: 40;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+#miniplayer.hidden { display: none; }
+
+.pb-left { display: flex; align-items: center; gap: 16px; }
+#mini-art { width: 56px; height: 56px; border-radius: 12px; }
+
+/* Mempercantik tombol Play */
+.play-circle, .play-big {
+  background: linear-gradient(135deg, var(--accent-bright), var(--accent));
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+.play-circle { width: 44px; height: 44px; border-radius: 50%; }
+
+/* ---------- Komponen UI (Cards, List) ---------- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  transition: all 0.25s ease;
+}
+.card:hover {
+  background: var(--card-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.card .art { border-radius: 16px; }
+.card.artist .art { border-radius: 50%; }
+
+.track {
+  border-radius: 12px;
+  margin-bottom: 4px;
+}
+
+/* ---------- Responsif Mobile ---------- */
+@media (max-width: 860px) {
+  #app { padding: 12px; gap: 12px; }
+  #sidebar, #topbar { display: none; }
+  #main { border-radius: 20px; }
+  
+  /* Mini Player di Mobile juga dibuat melayang */
+  #miniplayer {
+    left: 12px;
+    right: 12px;
+    bottom: calc(var(--navm-h) + 20px);
+    height: 72px;
+    padding: 0 16px;
+    border-radius: 18px;
+    grid-template-columns: 1fr auto;
+  }
+  
+  /* Navigasi Mobile bergaya Glassmorphism */
+  #nav-mobile {
+    display: flex; position: fixed; 
+    left: 12px; right: 12px; bottom: 12px; 
+    height: var(--navm-h);
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    z-index: 45;
+  }
+  
+  #nav-mobile .nav-item {
+    flex: 1; flex-direction: column; gap: 4px; font-size: 11px;
+    justify-content: center; align-items: center;
+  }
+}
+
+/* Sisa pengaturan layout standard (Sembunyikan/tampilkan sesuai kebutuhan internal JS) */
+.hidden { display: none !important; }
+.pb-seek, .pb-buttons { display: flex; align-items: center; }
+.pb-bar { flex: 1; height: 5px; background: var(--bar-bg); border-radius: 4px; position: relative; }
+#mini-progress-fill { height: 100%; background: var(--bar-fill); border-radius: 4px; }
+.nav-item.active { color: var(--accent-bright); }
