@@ -1296,3 +1296,32 @@ html[data-theme="light"] .modal-card .pl-form-input {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ================= Mobile Header ================= */
+#mobile-header {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  #mobile-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 16px 0 16px;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.03em;
+  }
+  
+  #mobile-header img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+  
+  /* Penyesuaian warna jika menggunakan tema terang (light mode) */
+  html[data-theme="light"] #mobile-header {
+    color: #121212;
+  }
+}
