@@ -1156,7 +1156,8 @@ body.hq-audio #yt-holder iframe, body.hq-audio #yt-player {
   .mood-card { font-size: 15px; padding: 14px; }
   .quick-grid { grid-template-columns: 1fr 1fr; }
   #nav-mobile {
-    display: flex; position: fixed; left: 0; right: 0; bottom: 0; height: var(--navm-h);
+    display: flex; position: fixed; left: 0; right: 0; bottom: 0; 
+    height: calc(var(--navm-h) + env(safe-area-inset-bottom)); /* Perbaikan di baris ini */
     background: linear-gradient(0deg, var(--bg) 40%, color-mix(in srgb, var(--bg) 85%, transparent));
     z-index: 45; padding-bottom: env(safe-area-inset-bottom);
   }
