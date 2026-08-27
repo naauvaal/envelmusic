@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#000000" />
-<title>Rich Music</title>
+<title>Envel Music</title>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/logo-192.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -24,7 +24,7 @@ try {
 <div id="splash" aria-hidden="true">
   <div class="splash-inner">
     <img class="splash-logo" src="/logo.png" width="128" height="128" alt="" />
-    <div class="splash-name">Rich Music</div>
+    <div class="splash-name">Envel Music</div>
   </div>
 </div>
 <!-- Spotify-style icon sprite -->
@@ -65,16 +65,14 @@ try {
   <symbol id="i-sun" viewBox="0 0 24 24"><path d="M12 7.2a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM1 11h3v2H1v-2zm19 0h3v2h-3v-2zM4.2 3.8l1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1zm12.1 12.1 1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1zM3.8 19.8l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4zm12.1-12.1 2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4z"/></symbol>
   <symbol id="i-moon" viewBox="0 0 24 24"><path d="M15.2 2.1A9.8 9.8 0 1 0 21.9 15 8 8 0 0 1 15.2 2.1z"/></symbol>
   <symbol id="i-pip" viewBox="0 0 24 24"><path d="M3 4.5A1.5 1.5 0 0 1 4.5 3h15A1.5 1.5 0 0 1 21 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 19.5v-15zM5 5v14h14V5H5zm7 6h6v6h-6v-6z"/></symbol>
-  <symbol id="i-share" viewBox="0 0 24 24"><path d="M14 4h6v6h-2V7.4l-7.3 7.3-1.4-1.4L16.6 6H14V4zM5 7h7v2H7v8h8v-4h2v6H5V7z"/></symbol>
 </svg>
-
 <div id="app">
   <!-- Sidebar (desktop) -->
   <aside id="sidebar">
     <div class="side-box">
       <div class="logo">
-        <img class="logo-img" src="/logo.png" srcset="/logo-64.png 64w, /logo-192.png 192w, /logo.png 512w" sizes="34px" width="34" height="34" alt="Rich Music" />
-        <span>Rich Music</span>
+        <img class="logo-img" src="/logo.png" srcset="/logo-64.png 64w, /logo-192.png 192w, /logo.png 512w" sizes="34px" width="34" height="34" alt="Envel Music" />
+        <span>Envel Music</span>
       </div>
       <nav id="nav-desktop"></nav>
     </div>
@@ -93,10 +91,9 @@ try {
         <button id="lib-new" class="icon-btn" title="Your Library"><svg class="ic"><use href="#i-fwd"/></svg></button>
       </div>
       <div id="lib-list"></div>
-      <div class="sidebar-footer">Rich Music · free web music player</div>
+      <div class="sidebar-footer">Envel Music - free web music player</div>
     </div>
   </aside>
-
   <!-- Main -->
   <main id="main">
     <div id="topbar">
@@ -116,14 +113,13 @@ try {
     </div>
     <div id="view"></div>
   </main>
-
   <!-- Player bar (Spotify style) -->
   <div id="miniplayer" class="hidden">
     <div class="pb-left">
       <img id="mini-art" alt="" />
       <div class="mini-meta">
-        <div id="mini-title">—</div>
-        <div id="mini-artist">—</div>
+        <div id="mini-title"> </div>
+        <div id="mini-artist"> </div>
       </div>
       <button id="mini-like" class="icon-btn" title="Favorite"><svg class="ic"><use href="#i-heart-o"/></svg></button>
       <button id="mini-float" class="icon-btn" title="Floating widget"><svg class="ic"><use href="#i-pip"/></svg></button>
@@ -150,10 +146,8 @@ try {
       <input type="range" id="mini-volume" min="0" max="100" value="100" />
     </div>
   </div>
-
   <!-- Bottom nav (mobile) -->
   <nav id="nav-mobile"></nav>
-
   <!-- Now playing (fullscreen) -->
   <div id="nowplaying" class="hidden">
     <div id="np-bg"></div>
@@ -174,8 +168,8 @@ try {
         <section id="np-player" class="np-pane active">
           <div class="np-art-wrap"><img id="np-art" alt="" /></div>
           <div class="np-meta">
-            <div id="np-title">—</div>
-            <div id="np-artist">—</div>
+            <div id="np-title"> </div>
+            <div id="np-artist"> </div>
           </div>
           <div class="np-seek">
             <span id="np-cur">0:00</span>
@@ -197,9 +191,9 @@ try {
             <button id="np-more" class="pill-btn" title="More"><svg class="ic"><use href="#i-more"/></svg><span>More</span></button>
             <button id="np-download" class="pill-btn np-extra" title="Download"><svg class="ic"><use href="#i-download"/></svg><span>Download</span></button>
             <button id="np-share" class="pill-btn np-extra" title="Share"><svg class="ic"><use href="#i-share"/></svg><span>Share</span></button>
-            <button id="np-speed" class="pill-btn np-extra" title="Playback speed"><svg class="ic"><use href="#i-clock"/></svg><span>1×</span></button>
+            <button id="np-speed" class="pill-btn np-extra" title="Playback speed"><svg class="ic"><use href="#i-clock"/></svg><span>1 </span></button>
             <button id="np-float" class="pill-btn np-extra" title="Floating widget"><svg class="ic"><use href="#i-pip"/></svg><span>Widget</span></button>
-            <button id="np-quality" class="pill-btn np-extra" title="YouTube Music audio — tap for YouTube max quality"><span>Quality</span></button>
+            <button id="np-quality" class="pill-btn np-extra" title="YouTube Music audio - tap for YouTube max quality"><span>Quality</span></button>
             <button id="np-sb" class="pill-btn np-extra" title="SponsorBlock auto-skip"><svg class="ic"><use href="#i-next"/></svg><span>SB</span></button>
             <div class="np-volume">
               <svg class="ic vol-ic"><use href="#i-volume"/></svg><input type="range" id="np-volume" min="0" max="100" value="100" />
@@ -212,11 +206,10 @@ try {
           <div id="lyrics-source"></div>
         </section>
         <section id="np-queue" class="np-pane"><div id="queue-list"></div></section>
-        <section id="np-related" class="np-pane"><div id="related-list" class="loading-note">Loading…</div></section>
+        <section id="np-related" class="np-pane"><div id="related-list" class="loading-note">Loading </div></section>
       </div>
     </div>
   </div>
-
   <!-- Add-to-playlist modal -->
   <div id="modal" class="hidden">
     <div class="modal-card">
@@ -227,15 +220,13 @@ try {
       </div>
     </div>
   </div>
-
   <div id="toast" class="hidden"></div>
-
   <!-- Floating mini widget (in-page fallback; also cloned into Document PiP) -->
   <div id="float-widget" class="hidden" aria-label="Floating player">
     <img id="fw-art" alt="" />
     <div class="fw-meta">
-      <div id="fw-title">—</div>
-      <div id="fw-artist">—</div>
+      <div id="fw-title"> </div>
+      <div id="fw-artist"> </div>
       <div id="fw-lyric" title="Open lyrics"></div>
       <div class="fw-bar" id="fw-bar"><div id="fw-fill"></div></div>
     </div>
@@ -246,7 +237,6 @@ try {
       <button type="button" class="fw-btn" data-fw="close" title="Close widget"><svg class="ic"><use href="#i-x"/></svg></button>
     </div>
   </div>
-
   <!-- hidden YouTube player + canvas/video used for OS Picture-in-Picture (recent apps) -->
   <div id="yt-holder"><div id="yt-player"></div></div>
   <canvas id="pip-canvas" width="360" height="640"></canvas>
